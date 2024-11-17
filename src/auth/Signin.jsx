@@ -12,7 +12,7 @@ const Signin = () => {
         
         const SIGN=()=>{
             const auth = getAuth(app);
-            signInWithEmailAndPassword(auth, email, password)
+            signInWithEmailAndPassword(auth, email, password).then((value)=> console.log(`hello`)).catch(err=>console.log(err))
         }
   return (
     <div>
