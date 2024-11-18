@@ -2,7 +2,7 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } f
 import { createContext } from "react";
 import { app } from "../Storage/Firebase";
 import { GoogleAuthProvider } from "firebase/auth";
-// Create a Context
+
 export const FirebaseContext = createContext(null);
 
 // Context Provider Component
@@ -37,11 +37,10 @@ export const FirebaseProvider = ({ children }) => {
     };
 
     return (
-        <FirebaseContext.Provider value={{ Signup, Signin,googleprovider,googleSignIn }}>
+        <FirebaseContext.Provider value={{Signup,Signin,googleprovider,googleSignIn }}>
             {children}
         </FirebaseContext.Provider>
     );
 };
 
-// Export the context for use in other components
 export default FirebaseContext;

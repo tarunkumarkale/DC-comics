@@ -1,10 +1,13 @@
 import React from 'react';
-import Login from './auth/login';
-import { Provi } from './PRACTICE-CONTEXT/Context';
+import Second from './Second';
+
+
 
 const App = () => {
   return (
-    
+    <>
+<Second/>
+    </>
   );
 };
 
