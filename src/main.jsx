@@ -4,9 +4,11 @@ import './index.css'
 import App from './App.jsx'
 import { ProviderFirebase } from './ProperContext/FirebaseContext.jsx'
 
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-  <ProviderFirebase><App /></ProviderFirebase>
+<ProviderFirebase><App /></ProviderFirebase>
+  
     
   </StrictMode>,
 )
