@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { usefirebase } from "../ProperContext/FirebaseContext";
+import { useNavigate } from "react-router-dom";
 
-const LoginForm = () => {
-  const { SignUpfun } = usefirebase(); // Use the custom hook for cleaner code
+const Signin = () => {
+  const { SignInfun ,SignIngoogleAuthProvider,isLogin } = usefirebase(); // Use the custom hook for cleaner code
   const [formData, setFormData] = useState({ email: "", password: "" });
+const Navigate=useNavigate()
+
+
+useEffect(()=>{Navigate("/")},[])
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -13,10 +19,10 @@ const LoginForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { email, password } = formData;
-    console.log("successful login: ", formData);
+    console.log("Form Data Submitted: ", formData);
 
     if (email && password) {
-      SignUpfun(email, password); // Call SignUpfun with valid email and password
+      SignInfun(email, password); // Call SignUpfun with valid email and password
     } else {
       console.error("Please fill in all required fields.");
     }
@@ -28,8 +34,8 @@ const LoginForm = () => {
         onSubmit={handleSubmit}
         className="bg-white shadow-lg rounded-lg p-8 w-full max-w-sm"
       >
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
-          Login
+        <h2 className="text-2xl font-bold text-center text-gray-800 mb-6 bg-slate-500 rounded-xl ">
+          Signin 🕹️
         </h2>
 
         <div className="mb-4">
@@ -63,16 +69,19 @@ const LoginForm = () => {
             required
           />
         </div>
-
-        <button
+  <button
           type="submit"
-          className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-200"
+          className=" bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-200 w-[40%] m-1"
         >
-          Login
+          Signin
         </button>
+     
+     
       </form>
+      <div>
+      <button className="bg-green-400 text-white w-[60%] rounded-xl m-1 active:bg-green-900" onClick={SignIngoogleAuthProvider}> Signin With Google</button></div>
     </div>
   );
 };
 
-export default LoginForm;
+export default Signin;
